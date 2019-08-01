@@ -1,0 +1,21 @@
+{
+  "name": "tienda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.0",
+    "@types/random-number": "0.0.0",
+    "express": "^4.17.1",
+    "mysql": "github:mysqljs/mysql",
+    "random-number": "0.0.9"
+  },
+  "devDependencies": {
+    "@types/mysql": "^2.15.6"
+  }
+}
