@@ -10,8 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "@types/express": "^4.17.0",
+    "@types/jsonwebtoken": "^8.3.2",
     "@types/random-number": "0.0.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mysql": "github:mysqljs/mysql",
     "random-number": "0.0.9"
   },
