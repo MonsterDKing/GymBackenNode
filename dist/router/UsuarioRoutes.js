@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = require("express");
 var mysql_1 = __importDefault(require("../mysql/mysql"));
-var Usuario_1 = __importDefault(require("../Class/Usuario"));
-var Tokens_1 = __importDefault(require("../Class/Tokens"));
+var Usuario_1 = __importDefault(require("../class/Usuario"));
+var Tokens_1 = __importDefault(require("../class/Tokens"));
 var usuarioRoutes = express_1.Router();
 //Registro Usuario
 usuarioRoutes.post('/registro', function (req, res) {

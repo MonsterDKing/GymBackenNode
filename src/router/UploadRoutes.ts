@@ -3,9 +3,9 @@ import fileUpload from 'express-fileupload';
 import path from 'path';
 import MySQL from '../mysql/mysql';
 import fs from 'fs';
-import Usuario from '../Class/Usuario';
-import Cliente from '../Class/Cliente';
-import { Producto } from '../Class/Producto';
+import Usuario from '../class/Usuario';
+import Cliente from '../class/Cliente';
+import { Producto } from '../class/Producto';
 
 const uploadsRoutes = Router();
 uploadsRoutes.use(fileUpload());

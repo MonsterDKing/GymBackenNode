@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var random_number_1 = __importDefault(require("random-number"));
+var random_number_1 = __importDefault(require("./node_modules/random-number"));
 var mysql_1 = __importDefault(require("../mysql/mysql"));
 var Cliente = /** @class */ (function () {
     function Cliente(nombre, sexo, fechaIngreso, Id, img) {

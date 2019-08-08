@@ -8,10 +8,11 @@ import estadisticasRoutes from './router/EstadisticasRoutes';
 import uploadsRoutes from './router/UploadRoutes';
 import imagenesRoutes from './router/ImagenesRoutes';
 import pagoRoutes from './router/PagosRoutes';
+import { PUERTO } from './config/env';
 
 
 
-const server = Server.init(3000);
+const server = Server.init(PUERTO);
 
 
 //midleware de transformar post to object 

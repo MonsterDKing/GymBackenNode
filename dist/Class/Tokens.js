@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+var jsonwebtoken_1 = __importDefault(require("./node_modules/jsonwebtoken"));
 var Token = /** @class */ (function () {
     function Token() {
     }

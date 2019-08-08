@@ -8,9 +8,9 @@ var express_fileupload_1 = __importDefault(require("express-fileupload"));
 var path_1 = __importDefault(require("path"));
 var mysql_1 = __importDefault(require("../mysql/mysql"));
 var fs_1 = __importDefault(require("fs"));
-var Usuario_1 = __importDefault(require("../Class/Usuario"));
-var Cliente_1 = __importDefault(require("../Class/Cliente"));
-var Producto_1 = require("../Class/Producto");
+var Usuario_1 = __importDefault(require("../class/Usuario"));
+var Cliente_1 = __importDefault(require("../class/Cliente"));
+var Producto_1 = require("../class/Producto");
 var uploadsRoutes = express_1.Router();
 uploadsRoutes.use(express_fileupload_1.default());
 uploadsRoutes.put('/:tipo/:id', function (req, res) {

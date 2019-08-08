@@ -1,4 +1,4 @@
-import rn from 'random-number';
+import rn from './node_modules/random-number';
 import MySQL from '../mysql/mysql';
 
 export default class Cliente {

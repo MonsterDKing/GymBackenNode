@@ -1,5 +1,5 @@
 import {Request,Response,NextFunction} from 'express';
-import Token from '../Class/Tokens';
+import Token from '../class/Tokens';
 const x = require('../Class/Tokens');
 
 export const verificaToken = (req:any,res:Response,next:NextFunction) =>{

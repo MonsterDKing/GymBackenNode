@@ -1,7 +1,7 @@
 import { Request, Response, Router } from 'express';
 import MySQL from '../mysql/mysql';
-import Usuario from '../Class/Usuario';
-import Token from '../Class/Tokens';
+import Usuario from '../class/Usuario';
+import Token from '../class/Tokens';
 
 const usuarioRoutes = Router();
 

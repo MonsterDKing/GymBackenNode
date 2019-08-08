@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = require("express");
 var mysql_1 = __importDefault(require("../mysql/mysql"));
-var Pagos_1 = require("../Class/Pagos");
+var Pagos_1 = require("../class/Pagos");
 var pagoRoutes = express_1.Router();
 //obtener todo los pagos
 pagoRoutes.get('/', function (req, res) {

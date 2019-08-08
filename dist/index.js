@@ -13,7 +13,8 @@ var EstadisticasRoutes_1 = __importDefault(require("./router/EstadisticasRoutes"
 var UploadRoutes_1 = __importDefault(require("./router/UploadRoutes"));
 var ImagenesRoutes_1 = __importDefault(require("./router/ImagenesRoutes"));
 var PagosRoutes_1 = __importDefault(require("./router/PagosRoutes"));
-var server = server_1.default.init(3000);
+var env_1 = require("./config/env");
+var server = server_1.default.init(env_1.PUERTO);
 //midleware de transformar post to object 
 server.app.use(bodyParser.urlencoded({ extended: true }));
 server.app.use(bodyParser.json());
