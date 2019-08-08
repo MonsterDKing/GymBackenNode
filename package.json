@@ -18,7 +18,7 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.1.5",
     "jsonwebtoken": "^8.5.1",
-    "mysql": "github:mysqljs/mysql",
+    "mysql": "github:m    ysqljs/mysql",
     "random-number": "0.0.9"
   },
   "devDependencies": {

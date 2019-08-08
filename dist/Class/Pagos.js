@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var mysql_1 = __importDefault(require("../mysql/mysql"));
-var dateformat_1 = __importDefault(require("./node_modules/dateformat"));
+var dateformat_1 = __importDefault(require("dateformat"));
 var Pago = /** @class */ (function () {
     function Pago(id, fecha, cliente) {
         this.id = id;

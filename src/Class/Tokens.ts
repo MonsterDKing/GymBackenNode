@@ -1,4 +1,4 @@
-import jwt from './node_modules/jsonwebtoken';
+import jwt from 'jsonwebtoken';
 
 
 export default class Token{

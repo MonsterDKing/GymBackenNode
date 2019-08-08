@@ -1,5 +1,5 @@
 import MySQL from "../mysql/mysql";
-import dateformat from './node_modules/dateformat';
+import dateformat from 'dateformat';
 export class Pago {
     id: number;
     fecha: string;
