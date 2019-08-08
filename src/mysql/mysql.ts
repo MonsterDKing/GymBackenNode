@@ -44,6 +44,10 @@ export default class MySQL{
     static prepararQuery(consulta:any,valores:any){
         return mysql.format(consulta,valores);
     }
+
+    static setearTiempo(){
+        return mysql.raw('CURRENT_TIMESTAMP()');
+    }
     
 
     private conectarDb(){

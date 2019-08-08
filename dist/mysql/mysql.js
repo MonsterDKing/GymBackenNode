@@ -39,6 +39,9 @@ var MySQL = /** @class */ (function () {
     MySQL.prepararQuery = function (consulta, valores) {
         return mysql.format(consulta, valores);
     };
+    MySQL.setearTiempo = function () {
+        return mysql.raw('CURRENT_TIMESTAMP()');
+    };
     MySQL.prototype.conectarDb = function () {
         var _this = this;
         this.con.connect(function (err) {
