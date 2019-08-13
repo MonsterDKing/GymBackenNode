@@ -68,7 +68,7 @@ usuarioRoutes.put('/actualizar', (req: Request, res: Response) => {
 //Login usuario
 usuarioRoutes.post('/login', (req: Request, res: Response) => {
     const body = req.body;
-    const consultaEmail = `SELECT * from Usuario where email = '${body.email}'`;
+    const consultaEmail = `SELECT * from usuario where email = '${body.email}'`;
     MySQL.ejecutarQuery(consultaEmail, (err: any, usuarios: Usuario[]) => {
         if (err) {
             res.status(400);

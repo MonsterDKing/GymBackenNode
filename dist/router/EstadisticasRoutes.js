@@ -50,7 +50,7 @@ estadisticasRoutes.get('/entradasMes', function (req, res) {
 estadisticasRoutes.get('/clientesNHoy', function (req, res) {
     var date = new Date();
     var fechaParseada = date.toISOString().slice(0, 10);
-    var consulta = "SELECT * FROM clientes c\n\tLEFT JOIN entradas e\n\tON c.Id = e.clienteid\n\tWHERE DATE(fechayhora) = ?\n\tGROUP BY c.Id ";
+    var consulta = "SELECT * FROM clientes c\n    WHERE DATE(c.fechaIngreso) = ?\n    GROUP BY c.Id ";
     var sql = mysql_1.default.prepararQuery(consulta, [fechaParseada]);
     mysql_1.default.ejecutarQuery(sql, function (err, consulta) {
         if (err) {
@@ -71,7 +71,7 @@ estadisticasRoutes.get('/clientesNMes', function (req, res) {
     var fechaBase1 = date.toISOString().slice(0, 7) + '-01';
     var fechaBase2 = date.toISOString().slice(0, 7) + '-30';
     ;
-    var consulta = "SELECT * FROM clientes c\n\tLEFT JOIN entradas e\n\tON c.Id = e.clienteid\n\tWHERE DATE(fechayhora) BETWEEN ? AND ? \n\tGROUP BY c.Id ";
+    var consulta = "SELECT * FROM clientes c\n\tWHERE DATE(c.fechaIngreso) BETWEEN ? AND ? \n\tGROUP BY c.Id ";
     var sql = mysql_1.default.prepararQuery(consulta, [fechaBase1, fechaBase2]);
     mysql_1.default.ejecutarQuery(sql, function (err, consulta) {
         if (err) {

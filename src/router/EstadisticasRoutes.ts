@@ -72,10 +72,8 @@ estadisticasRoutes.get('/clientesNHoy', (req: Request, res: Response) => {
     const date = new Date();
     const fechaParseada = date.toISOString().slice(0, 10);
     const consulta = `SELECT * FROM clientes c
-	LEFT JOIN entradas e
-	ON c.Id = e.clienteid
-	WHERE DATE(fechayhora) = ?
-	GROUP BY c.Id `
+    WHERE DATE(c.fechaIngreso) = ?
+    GROUP BY c.Id `
     const sql = MySQL.prepararQuery(consulta, [fechaParseada])
     MySQL.ejecutarQuery(sql, (err: any, consulta: any) => {
         if (err) {
@@ -98,9 +96,7 @@ estadisticasRoutes.get('/clientesNMes', (req: Request, res: Response) => {
     const fechaBase1 = date.toISOString().slice(0, 7) + '-01';
     const fechaBase2 = date.toISOString().slice(0, 7) + '-30';;
     const consulta = `SELECT * FROM clientes c
-	LEFT JOIN entradas e
-	ON c.Id = e.clienteid
-	WHERE DATE(fechayhora) BETWEEN ? AND ? 
+	WHERE DATE(c.fechaIngreso) BETWEEN ? AND ? 
 	GROUP BY c.Id `
     const sql = MySQL.prepararQuery(consulta, [fechaBase1,fechaBase2])
     MySQL.ejecutarQuery(sql, (err: any, consulta: any) => {

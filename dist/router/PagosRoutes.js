@@ -25,11 +25,23 @@ pagoRoutes.get('/', function (req, res) {
 //realizar pago
 pagoRoutes.get('/pago/:id', function (req, res) {
     var id = req.params.id;
-    Pagos_1.Pago.efectuarPagoMes(id).then(function (resp) {
-        return res.json({
-            ok: true,
-            mensaje: 'Pago realizado correctamente'
-        });
+    Pagos_1.Pago.verificarPrimeraVez(id).then(function (respuesta) {
+        if (respuesta) {
+            Pagos_1.Pago.efectuarPagoMes(id).then(function (resp) {
+                return res.json({
+                    ok: true,
+                    mensaje: 'Pago realizado correctamente'
+                });
+            });
+        }
+        else {
+            Pagos_1.Pago.efectuarPagoSumado(id).then(function (resp) {
+                return res.json({
+                    ok: true,
+                    mensaje: 'Pago realizado correctamenet sumado'
+                });
+            });
+        }
     });
 });
 exports.default = pagoRoutes;

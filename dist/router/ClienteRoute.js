@@ -26,7 +26,7 @@ clientesRoutes.get('/', function (req, res) {
 });
 //obtener todo los clientes
 clientesRoutes.get('/lista', function (req, res) {
-    var query = "SELECT \n    c.id,\n    c.nombre,\n    c.sexo,\n    c.fechaIngreso,\n    c.codigo,\n    c.estatus,\n    c.img,\n    p.fecha AS ultimopago,\n    DATE_ADD(p.fecha, INTERVAL 30 DAY) AS vencimiento\n  FROM\n    clientes c \n    INNER JOIN  \n       (SELECT cliente,fecha, MAX(id) max_id FROM pagos GROUP BY cliente) p\n       ON p.cliente = c.Id";
+    var query = "SELECT \n    c.id,\n    c.nombre,\n    c.sexo,\n    c.fechaIngreso,\n    c.codigo,\n    c.estatus,\n    c.img,\n    p1.fecha AS ultimopago,\n    DATE_ADD(p1.fecha, INTERVAL 30 DAY) AS vencimiento \n  FROM\n    pagos p1 \n    INNER JOIN \n      (SELECT \n        id,\n        cliente,\n        MAX(id) ultimoid,\n        fecha\n      FROM\n        pagos \n      GROUP BY cliente) p2 \n      ON p1.cliente = p2.cliente \n      AND p1.id = p2.ultimoid \n    INNER JOIN clientes c \n      ON c.id = p2.cliente";
     mysql_1.default.ejecutarQuery(query, function (err, resp) {
         if (err) {
             return res.json({
@@ -146,6 +146,21 @@ clientesRoutes.delete('/', function (req, res) {
         return res.json({
             ok: true,
             cliente: cliente
+        });
+    });
+});
+clientesRoutes.get('/vencidos', function (req, res) {
+    var consulta = "SELECT \n    c.id,\n    c.nombre,\n    c.sexo,\n    c.fechaIngreso,\n    c.codigo,\n    c.estatus,\n    c.img,\n    p1.fecha AS ultimopago,\n    DATE_ADD(p1.fecha, INTERVAL 30 DAY) AS vencimiento \n  FROM\n    pagos p1 \n    INNER JOIN \n      (SELECT \n        id,\n        cliente,\n        MAX(id) ultimoid,\n        fecha\n      FROM\n        pagos \n      GROUP BY cliente) p2 \n      ON p1.cliente = p2.cliente \n      AND p1.id = p2.ultimoid \n    INNER JOIN clientes c \n      ON c.id = p2.cliente \n     WHERE DATE(NOW()) >= DATE_ADD(p1.fecha, INTERVAL 30 DAY)";
+    mysql_1.default.ejecutarQuery(consulta, function (err, respuesta) {
+        if (err) {
+            return res.json({
+                ok: true,
+                clientes: []
+            });
+        }
+        return res.json({
+            ok: true,
+            clientes: respuesta
         });
     });
 });

@@ -33,13 +33,23 @@ clientesRoutes.get('/lista', (req: Request, res: Response) => {
     c.codigo,
     c.estatus,
     c.img,
-    p.fecha AS ultimopago,
-    DATE_ADD(p.fecha, INTERVAL 30 DAY) AS vencimiento
+    p1.fecha AS ultimopago,
+    DATE_ADD(p1.fecha, INTERVAL 30 DAY) AS vencimiento 
   FROM
-    clientes c 
-    INNER JOIN  
-       (SELECT cliente,fecha, MAX(id) max_id FROM pagos GROUP BY cliente) p
-       ON p.cliente = c.Id`;
+    pagos p1 
+    INNER JOIN 
+      (SELECT 
+        id,
+        cliente,
+        MAX(id) ultimoid,
+        fecha
+      FROM
+        pagos 
+      GROUP BY cliente) p2 
+      ON p1.cliente = p2.cliente 
+      AND p1.id = p2.ultimoid 
+    INNER JOIN clientes c 
+      ON c.id = p2.cliente`;
     MySQL.ejecutarQuery(query, (err: any, resp: any) => {
         if (err) {
             return res.json({
@@ -191,6 +201,49 @@ clientesRoutes.delete('/', (req: Request, res: Response) => {
             cliente
         });
     });
+});
+
+
+clientesRoutes.get('/vencidos', (req: Request, res: Response) => {
+    const consulta = `SELECT 
+    c.id,
+    c.nombre,
+    c.sexo,
+    c.fechaIngreso,
+    c.codigo,
+    c.estatus,
+    c.img,
+    p1.fecha AS ultimopago,
+    DATE_ADD(p1.fecha, INTERVAL 30 DAY) AS vencimiento 
+  FROM
+    pagos p1 
+    INNER JOIN 
+      (SELECT 
+        id,
+        cliente,
+        MAX(id) ultimoid,
+        fecha
+      FROM
+        pagos 
+      GROUP BY cliente) p2 
+      ON p1.cliente = p2.cliente 
+      AND p1.id = p2.ultimoid 
+    INNER JOIN clientes c 
+      ON c.id = p2.cliente 
+     WHERE DATE(NOW()) >= DATE_ADD(p1.fecha, INTERVAL 30 DAY)`;
+    MySQL.ejecutarQuery(consulta, (err: any, respuesta: any) => {
+        if (err) {
+            return res.json({
+                ok: true,
+                clientes: []
+            })
+        }
+        return res.json({
+            ok: true,
+            clientes: respuesta
+        })
+    })
+
 });
 
 

@@ -61,7 +61,7 @@ usuarioRoutes.put('/actualizar', function (req, res) {
 //Login usuario
 usuarioRoutes.post('/login', function (req, res) {
     var body = req.body;
-    var consultaEmail = "SELECT * from Usuario where email = '" + body.email + "'";
+    var consultaEmail = "SELECT * from usuario where email = '" + body.email + "'";
     mysql_1.default.ejecutarQuery(consultaEmail, function (err, usuarios) {
         if (err) {
             res.status(400);
