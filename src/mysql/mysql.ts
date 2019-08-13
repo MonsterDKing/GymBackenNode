@@ -14,7 +14,7 @@ export default class MySQL{
             user:'root',
             password:'PER46807971s',
             database:'gym',
-            port:3307
+            port:3306
         });
         this.conectarDb();
         
