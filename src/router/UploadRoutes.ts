@@ -91,7 +91,7 @@ function subirporTipo(tipo: any, id: any, nombreArchivo: any, res: Response) {
             console.log(nombreArchivo);
             console.log(resultado);
             Usuario.actualizarUsuario(resultado).then(usuarioNuevo => {
-                Usuario.obtenerusuarioPorId(id).then( (usuarioListo:Usuario)=>{
+                Usuario.obtenerusuarioPorId(id).then( (usuarioListo:any)=>{
                     res.json({
                         ok: true,
                         mensaje: 'Imagen de usuario actualizada',

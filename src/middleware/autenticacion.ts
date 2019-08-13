@@ -10,7 +10,7 @@ export const verificaToken = (req:any,res:Response,next:NextFunction) =>{
         console.log(decoded)
         req.usuario = decoded.usuario
         next();
-    }).catch(err =>{
+    }).catch((err:any) =>{
         res.json({
             ok:false,
             mensaje:'Token no es correcto',

@@ -8,7 +8,7 @@ export default class Usuario {
     role: string;
     img:string;
 
-    constructor(id: number, nombre: string, email: string, password: string, role: string, img) {
+    constructor(id: number, nombre: string, email: string, password: string, role: string, img:any) {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
