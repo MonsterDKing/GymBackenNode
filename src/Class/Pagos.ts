@@ -1,6 +1,6 @@
 import MySQL from "../mysql/mysql";
 import dateformat from 'dateformat';
-export class Pago {
+export default class Pago {
     id: number;
     fecha: string;
     cliente: number;
