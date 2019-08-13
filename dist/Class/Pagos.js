@@ -105,4 +105,4 @@ var Pago = /** @class */ (function () {
     };
     return Pago;
 }());
-exports.Pago = Pago;
+exports.default = Pago;
